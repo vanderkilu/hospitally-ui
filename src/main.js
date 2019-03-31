@@ -4,7 +4,15 @@ import router from './router'
 import VueApollo from 'vue-apollo'
 import { ApolloClient } from 'apollo-client'
 import { HttpLink } from 'apollo-link-http'
-import { InMemoryCache } from 'appollo-cache-inmemory'
+import { InMemoryCache } from 'apollo-cache-inmemory'
+import * as VueGoogleMaps from "vue2-google-maps";
+
+Vue.use(VueGoogleMaps, {
+  load: {
+    key: "AIzaSyC03iB5tTN_pzAYQUhrDfID8ckH4T86Y8A",
+    libraries: "places"
+  }
+});
 
 Vue.config.productionTip = false
 
@@ -25,6 +33,7 @@ const apolloProvider = new VueApollo({
   defaultClient: apolloClient
 })
 
+export const EventBus  = new Vue()
 
 new Vue({
   router,
