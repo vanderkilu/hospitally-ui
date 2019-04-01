@@ -39,7 +39,7 @@ export default new Router({
           component: Signup
         },
         {
-          path: '/login',
+          path: 'login',
           name: 'login',
           component: Login
         }
