@@ -25,12 +25,13 @@
                 <input type="text" class="input" placeholder="website" v-model="website">
                 <input type="text" class="input" placeholder="email" v-model="email">
                 <input type="text" class="input" placeholder="photo url" v-model="photoUrl">
-                 <select v-model="status">
+                 <select v-model="status" class="input">
                     <option disabled value="">select status</option>
                     <option>private</option>
                     <option>public</option>
                 </select>
-                <button class="btn btn-rounded">submit</button>
+               <div class="loader" v-if="isLoading"></div>
+               <button class="btn btn-rounded" v-else>next</button>
             </form>
         </div>
     </div>
@@ -61,6 +62,7 @@ export default {
     },
     methods: {
         createLocation() {
+            this.isLoading = true
             this.$apollo.mutate({
                 mutation: NEWLOCATION,
                 variables: {
@@ -74,9 +76,11 @@ export default {
                 console.log(data)
                 this.locationId = data.data.newLocation.id
                 this.isLocationDone = true
+                this.isLoading = false
             })
         },
         createHospital() {
+            this.isLoading = true
             this.$apollo.mutate({
                 mutation:NEWHOSPITAL,
                 variables: {
@@ -90,6 +94,7 @@ export default {
                 }
             }).then(data => {
                 console.log(data)
+                this.isLoading = false
                 this.$router.push({name: 'home'})
             })
         }
@@ -145,8 +150,8 @@ export default {
         padding: 1.5rem 8rem;
     }
     .loader {
-        border: 1.2rem solid #f3f3f3;
-        border-top: 1.2rem solid #1e88e5;
+        border: 0.6rem solid #f3f3f3;
+        border-top: 0.6rem solid #1e88e5;
         border-radius: 50%;
         width: 2rem;
         height: 2rem;
