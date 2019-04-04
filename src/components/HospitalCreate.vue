@@ -13,7 +13,7 @@
                     <option>Central</option>
                     <option>Eastern</option>
                 </select>
-                <div class="loader" v-if="isLoading"></div>
+                <div class="loader__small" v-if="isLoading"></div>
                 <button class="btn btn-rounded" v-else>next</button>
             </form>
         </div>
@@ -30,7 +30,7 @@
                     <option>private</option>
                     <option>public</option>
                 </select>
-               <div class="loader" v-if="isLoading"></div>
+               <div class="loader__small" v-if="isLoading"></div>
                <button class="btn btn-rounded" v-else>next</button>
             </form>
         </div>
@@ -149,7 +149,7 @@ export default {
         border: 1px solid #1e88e5;
         padding: 1.5rem 8rem;
     }
-    .loader {
+    .loader__small {
         border: 0.6rem solid #f3f3f3;
         border-top: 0.6rem solid #1e88e5;
         border-radius: 50%;
