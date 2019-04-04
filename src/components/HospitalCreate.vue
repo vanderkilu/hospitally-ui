@@ -13,7 +13,8 @@
                     <option>Central</option>
                     <option>Eastern</option>
                 </select>
-                <button class="btn btn-rounded">next</button>
+                <div class="loader" v-if="isLoading"></div>
+                <button class="btn btn-rounded" v-else>next</button>
             </form>
         </div>
         <div class="new-hospital__details" v-show="isLocationDone">
@@ -55,7 +56,7 @@ export default {
             status: '',
             isLocationDone: false,
             locationId: '',
-            isDisabled: false
+            isLoading: false
         }
     },
     methods: {
@@ -143,4 +144,18 @@ export default {
         border: 1px solid #1e88e5;
         padding: 1.5rem 8rem;
     }
+    .loader {
+        border: 1.2rem solid #f3f3f3;
+        border-top: 1.2rem solid #1e88e5;
+        border-radius: 50%;
+        width: 2rem;
+        height: 2rem;
+        animation: spin 2s linear infinite;
+    }
+
+    @keyframes spin {
+        0% { transform: rotate(0deg); }
+        100% { transform: rotate(360deg); }
+    }
+
 </style>
