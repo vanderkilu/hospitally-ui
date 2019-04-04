@@ -6,6 +6,7 @@ import Hospital from './components/Hospital.vue'
 import Auth from './components/Auth.vue'
 import Signup from './components/Signup.vue'
 import Login from './components/Login.vue'
+import HospitalCreate from './components/HospitalCreate.vue'
 
 Vue.use(Router)
 
@@ -27,6 +28,11 @@ export default new Router({
       path: '/hospital/:id',
       name: 'hospital',
       component: Hospital
+    },
+    {
+      path: '/new-hospital',
+      name: 'new-hospital',
+      component: HospitalCreate
     },
     {
       path: '/auth',

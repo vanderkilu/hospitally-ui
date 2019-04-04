@@ -1,24 +1,24 @@
 <template>
     <div class="new-hospital">
-        <div class="new-hospital__location">
+        <div class="new-hospital__location" v-if="!isLocationDone">
             <p class="new-hospital__text">Hospital location details </p>
-            <form action="" class="form">
-                <input type="text" class="input" placeholder="city" v-model="city">
-                <input type="text" class="input" placeholder="address" v-model="address">
-                <input type="text" class="input" placeholder="longitude" v-model="longitude">
-                <input type="text" class="input" placeholder="latitude" v-model="latitude">
-                <select v-model="region">
+            <form @submit.prevent="createLocation"  class="form">
+                <input type="text" class="input" placeholder="enter city" v-model="city">
+                <input type="text" class="input" placeholder="enter address" v-model="address">
+                <input type="text" class="input" placeholder="enter longitude" v-model="longitude">
+                <input type="text" class="input" placeholder="enter latitude" v-model="latitude">
+                <select v-model="region" class="input">
                     <option disabled value="">Please select region</option>
                     <option>Western</option>
                     <option>Central</option>
                     <option>Eastern</option>
                 </select>
-                <button class="btn">next</button>
+                <button class="btn btn-rounded">next</button>
             </form>
         </div>
         <div class="new-hospital__details" v-show="isLocationDone">
             <p class="new-hospital__text">Hospital details </p>
-            <form action="" class="form">
+            <form @submit.prevent="createHospital" class="form">
                 <input type="text" class="input" placeholder="hospital name" v-model="name">
                 <input type="text" class="input" placeholder="contact" v-model="contact">
                 <input type="text" class="input" placeholder="website" v-model="website">
@@ -29,7 +29,7 @@
                     <option>private</option>
                     <option>public</option>
                 </select>
-                <button class="btn">submit</button>
+                <button class="btn btn-rounded">submit</button>
             </form>
         </div>
     </div>
@@ -37,6 +37,8 @@
 
 
 <script>
+import { EventBus } from '../main.js'
+import { NEWLOCATION, NEWHOSPITAL } from '../graphql.js'
 export default {
     data() {
         return {
@@ -50,9 +52,53 @@ export default {
             website: '',
             email: '',
             photoUrl: '',
-            isLocationDone: false
+            status: '',
+            isLocationDone: false,
+            locationId: '',
+            isDisabled: false
         }
-    }
+    },
+    methods: {
+        createLocation() {
+            this.$apollo.mutate({
+                mutation: NEWLOCATION,
+                variables: {
+                    city: this.city,
+                    address: this.address,
+                    region: this.region,
+                    longitude: parseFloat(this.longitude),
+                    latitude: parseFloat(this.latitude)
+                }
+            }).then(data => {
+                console.log(data)
+                this.locationId = data.data.newLocation.id
+                this.isLocationDone = true
+            })
+        },
+        createHospital() {
+            this.$apollo.mutate({
+                mutation:NEWHOSPITAL,
+                variables: {
+                    name: this.name,
+                    contact: this.contact,
+                    email: this.email,
+                    photoUrl: this.photoUrl,
+                    status: this.status,
+                    website: this.website,
+                    locationId: this.locationId
+                }
+            }).then(data => {
+                console.log(data)
+                this.$router.push({name: 'home'})
+            })
+        }
+    },
+    mounted() {
+        EventBus.$emit('OTHER-PAGE', true)
+    },
+    beforeDestroy() {
+        EventBus.$emit('OTHER-PAGE', false)
+    },
 }
 </script>
 
@@ -70,7 +116,8 @@ export default {
         text-align: center;
     } 
     .form {
-        width: 80%;
+        width: 50%;
+        margin: 0 auto;
         display: flex;
         justify-content: center;
         align-items: center;
@@ -82,5 +129,18 @@ export default {
         border: none;
         border: 1px solid #e0e0e0;
         width: 100%;
+        border-radius: 2px;
+        padding: 1.5rem 2rem;
+    }
+    select.input {
+        background-color: white;
+        font-family: inherit;
+    }
+    .btn {
+        background-color:transparent;
+        color:#1e88e5;
+        border: none;
+        border: 1px solid #1e88e5;
+        padding: 1.5rem 8rem;
     }
 </style>

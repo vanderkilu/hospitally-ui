@@ -65,12 +65,14 @@ export default {
     .hospitals {
         display: grid;
         grid-template-columns: 1fr 1fr;
+        grid-column-gap: 1rem;
         padding-left: 2rem;
         margin-top: 2rem;
     }
     .hospitals__content {
         display: grid;
         grid-template-columns: repeat(2, 1fr); 
+        grid-gap: 1rem;
     }
     .card {
         border-radius: 5px;

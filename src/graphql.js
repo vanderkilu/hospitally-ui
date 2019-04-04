@@ -65,3 +65,19 @@ export const LOGIN = gql`mutation Login($email: String!, $password:String!) {
     }
 }
 `
+export const NEWLOCATION = gql`mutation NewLocation($address: String, $city: String!, 
+$region: String!, $longitude:Float!, $latitude:Float!) {
+    newLocation(address: $address, city: $city, 
+    region:$region, longitude:$longitude, latitude: $latitude) {
+        id
+    }
+}
+`
+export const NEWHOSPITAL = gql`mutation NewHospital($name: String!, $locationId: ID!,
+    $website:String,$photoUrl:String,$status: String, $contact: String, $email: String) {
+        newHospital(name: $name, locationId: $locationId, website:$website,
+                    photoUrl: $photoUrl, status: $status, contact: $contact, email: $email) {
+                        id
+                    }
+    }
+`
