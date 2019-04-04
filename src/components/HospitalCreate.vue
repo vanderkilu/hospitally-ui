@@ -3,11 +3,11 @@
         <div class="new-hospital__location" v-if="!isLocationDone">
             <p class="new-hospital__text">Hospital location details </p>
             <form @submit.prevent="createLocation"  class="form">
-                <input type="text" class="input" placeholder="enter city" v-model="city">
-                <input type="text" class="input" placeholder="enter address" v-model="address">
-                <input type="text" class="input" placeholder="enter longitude" v-model="longitude">
-                <input type="text" class="input" placeholder="enter latitude" v-model="latitude">
-                <select v-model="region" class="input">
+                <input type="text" class="input" placeholder="enter city" v-model="city" required>
+                <input type="text" class="input" placeholder="enter address" v-model="address" required>
+                <input type="text" class="input" placeholder="enter longitude" v-model="longitude" required>
+                <input type="text" class="input" placeholder="enter latitude" v-model="latitude" required>
+                <select v-model="region" class="input" required>
                     <option disabled value="">Please select region</option>
                     <option>Western</option>
                     <option>Central</option>
@@ -20,12 +20,12 @@
         <div class="new-hospital__details" v-show="isLocationDone">
             <p class="new-hospital__text">Hospital details </p>
             <form @submit.prevent="createHospital" class="form">
-                <input type="text" class="input" placeholder="hospital name" v-model="name">
-                <input type="text" class="input" placeholder="contact" v-model="contact">
+                <input type="text" class="input" placeholder="hospital name" v-model="name" required>
+                <input type="text" class="input" placeholder="contact" v-model="contact" required>
                 <input type="text" class="input" placeholder="website" v-model="website">
                 <input type="text" class="input" placeholder="email" v-model="email">
-                <input type="text" class="input" placeholder="photo url" v-model="photoUrl">
-                 <select v-model="status" class="input">
+                <input type="text" class="input" placeholder="photo url" v-model="photoUrl" required>
+                 <select v-model="status" class="input" required>
                     <option disabled value="">select status</option>
                     <option>private</option>
                     <option>public</option>
@@ -57,7 +57,7 @@ export default {
             status: '',
             isLocationDone: false,
             locationId: '',
-            isLoading: false
+            isLoading: false,
         }
     },
     methods: {
