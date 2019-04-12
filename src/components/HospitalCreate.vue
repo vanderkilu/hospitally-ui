@@ -12,6 +12,7 @@
                     <option>Western</option>
                     <option>Central</option>
                     <option>Eastern</option>
+                    <option>Greater Accra</option>
                 </select>
                 <div class="loader__small" v-if="isLoading"></div>
                 <button class="btn btn-rounded" v-else>next</button>
