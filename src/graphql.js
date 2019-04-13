@@ -81,3 +81,15 @@ export const NEWHOSPITAL = gql`mutation NewHospital($name: String!, $locationId:
                     }
     }
 `
+
+export const NEWCHAT = gql`
+subscription NewChat {
+    newChat {
+        id,
+        message,
+        postedBy {
+            id
+        }
+    }
+}
+`

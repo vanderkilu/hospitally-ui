@@ -14,13 +14,29 @@
 
 <script>
 import { EventBus } from '../main.js'
+import { NEWCHAT } from '../graphql.js'
 export default {
+    data() {
+        return {
+
+        }
+    },
     mounted() {
         EventBus.$emit('OTHER-PAGE', true)
     },
     beforeDestroy() {
         EventBus.$emit('OTHER-PAGE', false)
     },
+    apollo: {
+        $subscribe: {
+            newChat: {
+                query: NEWCHAT,
+                result(data) {
+                    console.log(data)
+                }
+            }
+        }
+    }
 }
 </script>
 
