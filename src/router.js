@@ -7,6 +7,8 @@ import Auth from './components/Auth.vue'
 import Signup from './components/Signup.vue'
 import Login from './components/Login.vue'
 import HospitalCreate from './components/HospitalCreate.vue'
+import MedicalPractioner from './components/MedicalPractitioner.vue'
+import ChatRoom from './components/ChatRoom.vue'
 
 Vue.use(Router)
 
@@ -33,6 +35,16 @@ export default new Router({
       path: '/new-hospital',
       name: 'new-hospital',
       component: HospitalCreate
+    },
+    {
+      path: '/practitioner',
+      name: 'practitioner',
+      component: MedicalPractioner
+    },
+    {
+      path: '/chatroom',
+      name: 'chatroom',
+      component: ChatRoom
     },
     {
       path: '/auth',

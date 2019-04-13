@@ -77,10 +77,11 @@ export default {
     .card {
         border-radius: 5px;
         color: #616161;
-        height: 40rem;
         box-shadow: 0 0.1rem 0.4rem rgba(0,0,0,0.03);
         background-color: white;
         cursor: pointer;
+        align-self: flex-start;
+
     }
     .card__image {
         width: 100%;
