@@ -6,7 +6,8 @@
                 <input type="text" class="input input--lg" placeholder="search hospital">
             </form>
             <p class="home__text">Locate A new Hospital Now</p>
-            <button class="btn btn-rounded btn-primary">Locate now</button>
+            <div class="loader__small" v-if="isLoading"></div>
+            <button class="btn btn-rounded btn-primary" @click="toNearest" v-else>Locate now</button>
         </div>
         <div class="main">
             <h3 class="heading--main">Discover hospitals</h3>
@@ -26,10 +27,12 @@
 
 <script>
 import { LOCATIONS } from '../graphql.js'
+import { setTimeout } from 'timers';
 export default {
     data() {
         return {
-            locations: []
+            locations: [],
+            isLoading: false
         }
     },
     computed: {
@@ -40,6 +43,13 @@ export default {
     methods: {
         routeTo(city) {
             this.$router.push({name:'hospitals-by-city', params: {city: city}})
+        },
+        toNearest() {
+            this.isLoading = true
+            setTimeout(()=> {
+                 this.isLoading = false
+                 this.$router.push({name: 'hospitals-by-city', params: {city: 'tarkwa'}})
+            }, 5000)
         }
     },
     apollo: {

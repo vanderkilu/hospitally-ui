@@ -5,8 +5,8 @@
         </div>
         <div class="chatroom__right">
             <div class="chatroom__main"></div>
-            <form  class="form">
-                <input type="text" class="input" placeholder="enter message">
+            <form @submit.prevent="createChat" class="form">
+                <input type="text" class="input" placeholder="enter message" v-model="message">
             </form>
         </div>
     </div>
@@ -14,11 +14,12 @@
 
 <script>
 import { EventBus } from '../main.js'
-import { NEWCHAT } from '../graphql.js'
+import { NEWCHAT, CREATECHAT } from '../graphql.js'
 export default {
     data() {
         return {
-
+            message: '',
+            messages: []
         }
     },
     mounted() {
@@ -27,11 +28,25 @@ export default {
     beforeDestroy() {
         EventBus.$emit('OTHER-PAGE', false)
     },
+    methods: {
+        createChat() {
+            this.$apollo.mutate({
+                mutation: CREATECHAT,
+                variables: {
+                    message: this.message
+                }
+            })
+            .then((data) => {  
+                console.log(this.messages)
+                })
+        }
+    },
     apollo: {
         $subscribe: {
             newChat: {
                 query: NEWCHAT,
                 result(data) {
+                    this.messages.push(data)
                     console.log(data)
                 }
             }
@@ -54,11 +69,14 @@ export default {
    }
    .chatroom__right {
        background-color: #e0e0e0;
+       position: relative;
    }
    .chatroom__main {
       min-height: 80%;
    }
    .form {
+       position: absolute;
+       bottom: 0;
        width: 100%;
        padding: 2rem;
        display: flex;
@@ -66,5 +84,12 @@ export default {
    }
    .input {
        width: 60%;
+       border-radius: 6rem;
+       padding: 1.4rem 2rem;
+   }
+   .chatroom__text {
+       justify-content: center;
+       font-size: 2rem;
+       margin-top: 1rem;
    }
 </style>

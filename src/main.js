@@ -9,6 +9,8 @@ import * as VueGoogleMaps from "vue2-google-maps";
 import { split } from 'apollo-link'
 import { WebSocketLink } from 'apollo-link-ws'
 import { getMainDefinition } from 'apollo-utilities'
+import { setContext } from 'apollo-link-context'
+import { getToken } from './utils'
 
 Vue.use(VueGoogleMaps, {
   load: {
@@ -30,20 +32,27 @@ const wsLink = new WebSocketLink({
   },
 })
 
-const link = split(
+
+const authLink = setContext(()=> ({
+  headers: {
+    authorization: `Bearer ${getToken()}`
+  }
+}))
+
+const socketLink = split(
   ({ query }) => {
     const { kind, operation } = getMainDefinition(query)
     return kind === 'OperationDefinition' &&
       operation === 'subscription'
   },
   wsLink,
-  httpLink
+  authLink.concat(httpLink)
 )
 
 const cache = new InMemoryCache()
 
 const apolloClient = new ApolloClient({
-  link: httpLink,
+  link: socketLink,
   cache
 })
 

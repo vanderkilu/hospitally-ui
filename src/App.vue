@@ -2,7 +2,7 @@
     <div class="main">
         <app-header></app-header>
         <transition name="up">
-             <router-view></router-view>
+             <router-view :key="$route.path"></router-view>
         </transition>
     </div>
 </template>
@@ -73,5 +73,18 @@ export default {
     .up-enter, .up-leave-to {
         opacity: 0;
         transform: translateY(-6rem);
+    }
+    .loader__small {
+        border: 0.6rem solid #f3f3f3;
+        border-top: 0.6rem solid #1e88e5;
+        border-radius: 50%;
+        width: 2rem;
+        height: 2rem;
+        animation: spin 2s linear infinite;
+    }
+
+    @keyframes spin {
+        0% { transform: rotate(0deg); }
+        100% { transform: rotate(360deg); }
     }
 </style>
