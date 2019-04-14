@@ -34,19 +34,18 @@ export default {
                 email: '',
                 photoUrl: '',
                 status: '',
-            }
+            },
+            id: this.$route.params.id
         }
     },
     components: {
         appLoader: Loader
     },
     apollo: {
-        hospitals: {
+        hospital: {
             query: HOSPITAL,
             variables() {
-                return {
-                   id: this.$route.id
-                }
+                return {id: this.id}
             },
             update: (data) => data.hospital
         }
@@ -57,6 +56,7 @@ export default {
             this.$apollo.mutate({
                 mutation:UPDATEHOSPITAL,
                 variables: {
+                    id: this.id,
                     name: this.hospital.name,
                     contact: this.hospital.contact,
                     email: this.hospital.email,
@@ -70,6 +70,9 @@ export default {
                 this.$router.push({name: 'home'})
             })
         }
+    },
+    mounted() {
+        console.log(this.id)
     }
 }
 </script>

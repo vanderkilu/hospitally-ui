@@ -130,9 +130,7 @@ export const DELETEHOSPITAL = gql`mutation DeleteHospital($id: ID) {
     }
 }`
 
-export const UPDATEHOSPITAL = gql`mutation 
-UpdateHospital($id: ID!, $name: String,
-$photoUrl:String,$website:String,
+export const UPDATEHOSPITAL = gql`mutation UpdateHospital($id: ID!, $name: String,$photoUrl:String,$website:String,
 $status: String, $contact: String, $email: String) {
     updateHospital(id: $id, name: $name, photoUrl: $photoUrl,
     website:$website,status: $status, 
