@@ -95,7 +95,7 @@ export default {
             }).then(data => {
                 console.log(data)
                 this.isLoading = false
-                this.$router.push({name: 'home'})
+                this.$router.push({name: 'admin-home'})
             })
         }
     },

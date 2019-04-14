@@ -13,7 +13,7 @@
                     <option>public</option>
                 </select>
                <div class="loader__small" v-if="isLoading"></div>
-               <button class="btn btn-rounded" v-else>next</button>
+               <button class="btn btn-rounded" v-else>update</button>
             </form>
             <app-loader v-if="$apollo.loading"></app-loader>
     </div>
@@ -67,7 +67,7 @@ export default {
             }).then(data => {
                 console.log(data)
                 this.isLoading = false
-                this.$router.push({name: 'home'})
+                this.$router.push({name: 'admin-home'})
             })
         }
     },
