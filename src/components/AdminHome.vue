@@ -5,7 +5,7 @@
                 <p class="hospital__name">{{hospital.name}}</p>
                 <p class="hospital__location">{{hospital.location.city}}</p>
                 <img src="../assets/edit.svg" class="hospital__icon">
-                <img src="../assets/delete.svg" class="hospital__icon">
+                <img src="../assets/delete.svg" class="hospital__icon" @click="removeHospital(hospital.id)">
             </div>
         </div>
         <app-loader v-if="$apollo.loading"></app-loader>
@@ -13,7 +13,7 @@
 </template>
 
 <script>
-import { HOSPITALS } from '../graphql.js'
+import { HOSPITALS, DELETEHOSPITAL } from '../graphql.js'
 import Loader from './Loader.vue'
 export default {
     data() {
@@ -30,6 +30,20 @@ export default {
             update: (data) => data.hospitals
         }
     },
+    methods: {
+        removeHospital(id) {
+            this.$apollo.mutate({
+                mutation: DELETEHOSPITAL,
+                variables: {
+                    id: id
+                }
+            }).then((data)=> {
+                console.log(data)
+                let hospitalToRemove = this.hospitals.find((hospital)=> hospital.id === id)
+                this.hospitals.splice(this.hospitals.indexOf(hospitalToRemove), 1)
+            })
+        }
+    }
 
 }
 </script>
@@ -65,5 +79,6 @@ export default {
         width: 2rem;
         height: 2rem;
         flex-basis: 15%;
+        cursor: pointer;
     }
 </style>

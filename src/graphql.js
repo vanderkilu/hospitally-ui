@@ -121,3 +121,9 @@ export const HOSPITALS = gql`query Hospitals {
         }
     }
 }`
+
+export const DELETEHOSPITAL = gql`mutation DeleteHospital($id: ID) {
+    deleteHospital(id: $id) {
+        id,
+    }
+}`
