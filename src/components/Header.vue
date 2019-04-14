@@ -1,7 +1,7 @@
 <template>
     <div class="nav" :class="{'colored': colored}" v-if="show">
         <router-link :to="{name: 'home'}" class="nav__brand" >Hospitally.gh</router-link>
-        <router-link :to="{name: 'practitioner'}" class="btn btn-rounded">Medical practioner</router-link>
+        <router-link :to="{name: 'practitioner'}" class="btn btn-rounded">staff corner</router-link>
     </div>
 </template>
 

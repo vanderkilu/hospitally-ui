@@ -5,7 +5,7 @@
             <form class="home__form">
                 <input type="text" class="input input--lg" placeholder="search hospital">
             </form>
-            <p class="home__text">Locate A new Hospital Now</p>
+            <p class="home__text">To The Hospital Near Me </p>
             <div class="loader__small" v-if="isLoading"></div>
             <button class="btn btn-rounded btn-primary" @click="toNearest" v-else>Locate now</button>
         </div>
@@ -104,6 +104,7 @@ export default {
     .home__text {
         font-size: 1.5rem;
         font-weight: 800;
+        margin-bottom: 5rem;
     }
     .btn-primary {
         padding: 1.6rem 3.6rem;
@@ -111,6 +112,7 @@ export default {
         background-color: #4a148c;
         color: white;
         box-shadow: 0 1rem 2rem rgba(0,0,0,0.02);
+        animation: pulse 2s infinite;
     }
     .main__cities {
         display: grid;
@@ -131,5 +133,30 @@ export default {
         background-color: white;
         min-height: 20rem;
         cursor: pointer;
+    }
+    @-webkit-keyframes pulse {
+        0% {
+            -webkit-box-shadow: 0 0 0 0 rgba(128,0,128,0.4);
+        }
+        70% {
+            -webkit-box-shadow: 0 0 0 1.8rem rgba(128,0,128, 0);
+        }
+        100% {
+            -webkit-box-shadow: 0 0 0 0 rgba(128,0,128, 0);
+        }
+    }
+    @keyframes pulse {
+        0% {
+            -moz-box-shadow: 0 0 0 0 rgba(128,0,128, 0.4);
+            box-shadow: 0 0 0 0 rgba(128,0,128, 0.4);
+        }
+        70% {
+            -moz-box-shadow: 0 0 0 1.8rem rgba(128,0,128, 0);
+            box-shadow: 0 0 0 1.8rem rgba(128,0,128, 0);
+        }
+        100% {
+            -moz-box-shadow: 0 0 0 0 rgba(128,0,128, 0);
+            box-shadow: 0 0 0 0 rgba(128,0,128, 0);
+        }
     }
 </style>
