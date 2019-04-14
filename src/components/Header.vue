@@ -2,6 +2,7 @@
     <div class="nav" :class="{'colored': colored}" v-if="show">
         <router-link :to="{name: 'home'}" class="nav__brand" >Hospitally.gh</router-link>
         <router-link :to="{name: 'practitioner'}" class="btn btn-rounded">staff corner</router-link>
+        <a href="https://www.webmd.com/first-aid/first-aid-a-to-z" class="first-aid btn btn-rounded">learn about first aid </a>
     </div>
 </template>
 
@@ -43,5 +44,9 @@ export default {
     .colored {
         background-color: #4a148c;
         color: white; 
+    }
+    .first-aid {
+        color: white;
+        font-size: 1.8rem;
     }
 </style>
