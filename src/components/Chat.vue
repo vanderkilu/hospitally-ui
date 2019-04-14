@@ -1,7 +1,7 @@
 <template>
-    <div class="chat" :style="chat.style">
-        <span class="chat__initial">{{chat.username.charAt(0)}}</span>
-        <p class="chat__user">{{chat.username}}</p>
+    <div class="chat">
+        <span class="chat__initial">{{chat.postedBy.name.charAt(0)}}</span>
+        <p class="chat__user">{{chat.postedBy.name}}</p>
         <p class="chat__message">{{chat.message}}</p>
     </div>
 </template>
@@ -25,8 +25,6 @@ export default {
         padding: 1rem 2rem;
         font-size: 1rem;
         color: #9e9e9e;
-        position: absolute;
-        z-index: 1;
     }
     .chat__initial {
         grid-row: 1 / span 2;

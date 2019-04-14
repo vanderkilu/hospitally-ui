@@ -41,7 +41,7 @@ export default {
         font-weight: 600;
     }
     .colored {
-        background-color: #1e88e5;
+        background-color: #4a148c;
         color: white; 
     }
 </style>

@@ -108,7 +108,7 @@ export default {
     .btn-primary {
         padding: 1.6rem 3.6rem;
         font-size: 1.5rem;
-        background-color: #1e88e5;
+        background-color: #4a148c;
         color: white;
         box-shadow: 0 1rem 2rem rgba(0,0,0,0.02);
     }

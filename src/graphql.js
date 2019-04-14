@@ -104,3 +104,10 @@ mutation CreateChat($message: String!) {
     }
 }
 `
+
+export const USERS = gql` query Users {
+    users {
+        id, 
+        name,
+    }
+}`

@@ -36,7 +36,7 @@ export default {
         padding: 0.8rem 1.5rem;
         border: none;
         background-color: white;
-        color: #1e88e5;
+        color: #4a148c;
         font-size: 1.2rem;
         cursor: pointer;
     }
@@ -47,7 +47,7 @@ export default {
         padding: 3rem;
         border-radius: 3px;
         margin-left: 2rem;
-        color: #1e88e5;
+        color: #4a148c;
     }
     .btn:active, .btn:focus {
         outline: none;
@@ -76,7 +76,7 @@ export default {
     }
     .loader__small {
         border: 0.6rem solid #f3f3f3;
-        border-top: 0.6rem solid #1e88e5;
+        border-top: 0.6rem solid #4a148c;
         border-radius: 50%;
         width: 2rem;
         height: 2rem;

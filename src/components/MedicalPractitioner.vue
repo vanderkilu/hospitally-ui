@@ -92,9 +92,9 @@ export default {
     }
     .btn {
         background-color:transparent;
-        color:#1e88e5;
+        color:#4a148c;
         border: none;
-        border: 1px solid #1e88e5;
+        border: 1px solid #4a148c;
         padding: 1.2rem 6rem;
     }
     .wrong {
