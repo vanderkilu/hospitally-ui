@@ -2,7 +2,7 @@
     <div class="admin-wrapper">
         <div class="nav colored">
             <router-link class="nav__brand" :to="{name: 'home'}">Hospitally.gh</router-link>
-            <router-link class="nav__link" :to="{}">Hospitals</router-link>
+            <router-link class="nav__link" :to="{name: 'admin-home'}">Hospitals</router-link>
             <router-link class="nav__link" :to="{name: 'new-hospital'}">Add Hospital</router-link>
         </div>
         <router-view></router-view>

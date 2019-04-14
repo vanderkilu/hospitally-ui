@@ -27,6 +27,7 @@ export const HOSPITAL = gql`query GetHospital($id: ID!) {
         name,
         photoUrl,
         status,
+        website,
         contact,
         location {
             city,
@@ -127,3 +128,15 @@ export const DELETEHOSPITAL = gql`mutation DeleteHospital($id: ID) {
         id,
     }
 }`
+
+export const UPDATEHOSPITAL = gql`mutation 
+UpdateHospital($id: ID!, $name: String,
+$photoUrl:String,$website:String,
+$status: String, $contact: String, $email: String) {
+    updateHospital(id: $id, name: $name, photoUrl: $photoUrl,
+    website:$website,status: $status, 
+    contact: $contact, email: $email) {
+        id,
+    }
+}
+`

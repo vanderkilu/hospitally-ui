@@ -11,6 +11,7 @@ import ChatRoom from './components/ChatRoom.vue'
 import AdminHome from './components/AdminHome.vue'
 import AdminWrapper from './components/AdminWrapper.vue'
 import AdminHospitalCreate from './components/AdminHospitalCreate.vue'
+import AdminHospitalEdit from './components/AdminHospitalEdit.vue'
 
 Vue.use(Router)
 
@@ -36,6 +37,11 @@ export default new Router({
         path: 'new-hospital',
         name: 'new-hospital',
         component: AdminHospitalCreate
+      },
+      {
+        path: 'edit-hospital/:id',
+        name: 'edit-hospital',
+        component: AdminHospitalEdit
       },
 
     ]

@@ -4,7 +4,7 @@
             <div class="admin-hospital__card" v-for="hospital in hospitals" :key="hospital.id">
                 <p class="hospital__name">{{hospital.name}}</p>
                 <p class="hospital__location">{{hospital.location.city}}</p>
-                <img src="../assets/edit.svg" class="hospital__icon">
+                <img src="../assets/edit.svg" class="hospital__icon" @click="routeTo(hospital.id)">
                 <img src="../assets/delete.svg" class="hospital__icon" @click="removeHospital(hospital.id)">
             </div>
         </div>
@@ -42,6 +42,9 @@ export default {
                 let hospitalToRemove = this.hospitals.find((hospital)=> hospital.id === id)
                 this.hospitals.splice(this.hospitals.indexOf(hospitalToRemove), 1)
             })
+        },
+        routeTo(id) {
+            this.$router.push({name: 'edit-hospital', params: {id: id}})
         }
     }
 
