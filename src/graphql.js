@@ -29,6 +29,7 @@ export const HOSPITAL = gql`query GetHospital($id: ID!) {
         status,
         website,
         contact,
+        email,
         location {
             city,
             latitude,

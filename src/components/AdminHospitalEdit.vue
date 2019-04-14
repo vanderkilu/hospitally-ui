@@ -63,7 +63,6 @@ export default {
                     photoUrl: this.hospital.photoUrl,
                     status: this.hospital.status,
                     website: this.hospital.website,
-                    locationId: this.hospital.locationId
                 }
             }).then(data => {
                 console.log(data)
