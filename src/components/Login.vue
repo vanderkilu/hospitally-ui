@@ -41,7 +41,7 @@ export default {
             })
             .then(data => {
                 storeToken(data.data.login.token)
-                if (this.$route.params.id === 'admin') {
+                if (this.$route.query.name === 'admin') {
                     this.$router.push({name: 'admin-home'})
                 }
                 else {

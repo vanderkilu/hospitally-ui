@@ -22,7 +22,7 @@ export default {
     },
     beforeRouteEnter(to, from, next) {
         if (getToken() === null) {
-             next({name: 'login', params: {name: 'admin'}})
+             next({name: 'login', query: {name: 'admin'}})
         }
         else {
             next()
