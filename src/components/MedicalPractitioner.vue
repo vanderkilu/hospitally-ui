@@ -1,7 +1,7 @@
 <template>
     <div class="practioner">
         <form  @submit.prevent="grantAccess" class="form">
-            <p class="form__text">Enter your medical number</p>
+            <p class="form__text">Enter your medical number to enter chatroom </p>
             <transition mode="out-in" name="fade">
                 <p class="form__error" v-show="!isValid">please enter a valid number </p>
             </transition>

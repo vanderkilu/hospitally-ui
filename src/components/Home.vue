@@ -3,7 +3,7 @@
          <div class="home">
             <div class="home__main-text"> Locate Nearest Hospital Now !</div>
             <form class="home__form">
-                <input type="text" class="input input--lg" placeholder="search hospital">
+                <input type="text" class="input input--lg" placeholder="which city are you in? ">
             </form>
             <p class="home__text">To The Hospital Near Me </p>
             <div class="loader__small" v-if="isLoading"></div>
@@ -19,7 +19,13 @@
             </div>
         </div>
         <div class="description">
-
+            <h3 class="heading--main"> What is Hospitally.gh </h3>
+            <p class="description__text">
+               Hospitally is a hospital location and medical practitioners platform uniting patients and dcotors. 
+                It has a full catalogue of many hospitals in various cities in the country, 
+                Are you new to a city?, You can search for a hospital near you. 
+                Is there an emergency, locate a hospital near you and call their hotline center now!
+            </p>
         </div>
     </div>
    
@@ -112,7 +118,7 @@ export default {
         background-color: #4a148c;
         color: white;
         box-shadow: 0 1rem 2rem rgba(0,0,0,0.02);
-        animation: pulse 2s infinite;
+        animation: pulse 1.5s infinite;
     }
     .main__cities {
         display: grid;
@@ -133,6 +139,16 @@ export default {
         background-color: white;
         min-height: 20rem;
         cursor: pointer;
+    }
+    .description {
+       background-color: white;
+       padding: 10rem 35rem;
+    }
+    .description__text {
+        margin-top: 5rem;
+        color: #616161;
+        font-size: 2rem;
+        text-align: center;
     }
     @-webkit-keyframes pulse {
         0% {

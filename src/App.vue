@@ -62,9 +62,9 @@ export default {
         outline: none;
     }
     .heading--main {
-        font-size: 2.2rem;
+        font-size: 3rem;
         font-weight: 800;
-        color: #212121;
+        color: #4a148c;
         text-align: center;
     }
     .up-enter-active, .up-leave-active {
