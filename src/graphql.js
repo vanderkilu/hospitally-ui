@@ -111,3 +111,13 @@ export const USERS = gql` query Users {
         name,
     }
 }`
+
+export const HOSPITALS = gql`query Hospitals {
+    hospitals {
+        id,
+        name,
+        location {
+            city
+        }
+    }
+}`

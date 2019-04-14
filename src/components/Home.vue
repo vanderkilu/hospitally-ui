@@ -73,7 +73,7 @@ export default {
     }
     .home{
         background: linear-gradient(rgba(77, 5, 232, 0.39)),url('../assets/doctor.svg');
-        height: 100vh;
+        height: 120vh;
         background-position: center;
         background-size: cover;
         background-repeat: no-repeat;

@@ -6,9 +6,11 @@ import Hospital from './components/Hospital.vue'
 import Auth from './components/Auth.vue'
 import Signup from './components/Signup.vue'
 import Login from './components/Login.vue'
-import HospitalCreate from './components/HospitalCreate.vue'
 import MedicalPractioner from './components/MedicalPractitioner.vue'
 import ChatRoom from './components/ChatRoom.vue'
+import AdminHome from './components/AdminHome.vue'
+import AdminWrapper from './components/AdminWrapper.vue'
+import AdminHospitalCreate from './components/AdminHospitalCreate.vue'
 
 Vue.use(Router)
 
@@ -22,6 +24,23 @@ export default new Router({
       component: Home
     },
     {
+      path: '/admin',
+      name: 'admin',
+      component: AdminWrapper,
+      children: [{
+        path: '',
+        name: 'admin-home',
+        component: AdminHome
+      },
+      {
+        path: 'new-hospital',
+        name: 'new-hospital',
+        component: AdminHospitalCreate
+      },
+
+    ]
+    },
+    {
       path: '/hospitals/:city',
       name: 'hospitals-by-city',
       component: Hospitals
@@ -30,12 +49,7 @@ export default new Router({
       path: '/hospital/:id',
       name: 'hospital',
       component: Hospital
-    },
-    {
-      path: '/new-hospital',
-      name: 'new-hospital',
-      component: HospitalCreate
-    },
+    }, 
     {
       path: '/practitioner',
       name: 'practitioner',

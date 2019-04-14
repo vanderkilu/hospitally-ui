@@ -1,5 +1,6 @@
 <template>
     <div class="wrapper">
+        <app-loader v-if="$apollo.loading"></app-loader>
          <div class="background">
             <h3><span class="background__text">{{hospital.name}}</span></h3>
             <div class="background__card">
@@ -41,6 +42,7 @@
 <script>
 import GoogleMap from './GoogleMap.vue'
 import { HOSPITAL } from '../graphql.js'
+import Loader from './Loader'
 export default {
     data() {
         return {
@@ -54,7 +56,8 @@ export default {
         }
     },
     components: {
-        appGoogleMap:GoogleMap
+        appGoogleMap:GoogleMap,
+        appLoader: Loader
     },
     apollo: {
         hospital: {
@@ -82,8 +85,8 @@ export default {
     }
     .background__text {
         font-size: 6rem;
-        background-color: #1e88e5;
-        box-shadow: 10px 0 0 #1e88e5, -10px 0 0 #1e88e5;
+        background-color: #4a148c;
+        box-shadow: 10px 0 0 #4a148c, -10px 0 0 #4a148c;
         color: white;
         padding: 1rem;
         box-decoration-break: clone;
@@ -105,7 +108,7 @@ export default {
         transform: translateY(10rem);
     }
     .call {
-        color: #1e88e5;
+        color: #4a148c;
         font-weight: 800;
     }
     .hotline {
@@ -151,7 +154,7 @@ export default {
         margin: 2rem 0;
     }
     strong {
-        color: #1e88e5;
+        color: #4a148c;
     }
     .form  {
         width: 100%;
@@ -182,7 +185,7 @@ export default {
         height: 3.5rem;
         border-radius: 50%;
         background-color: #e3f2fd;
-        color: #1e88e5;
+        color: #4a148c;
         display: flex;
         justify-content: center;
         align-items: center;

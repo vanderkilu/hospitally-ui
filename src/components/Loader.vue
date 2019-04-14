@@ -15,10 +15,14 @@
          justify-content: center;
          align-items: center;
          z-index: 5;
+         position: fixed;
+         top: 50%;
+         left: 50%;
+         transform: translate(-50%, -50%);
      }
      .loader{
         border: 1rem solid #f3f3f3;
-        border-top: 1rem solid #1e88e5;
+        border-top: 1rem solid#4a148c;
         border-radius: 50%;
         width: 4rem;
         height: 4rem;
